@@ -17,12 +17,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 
 # --- Configuración -----------------------------------------------------------
 SECRET_KEY = os.getenv("SECRET_KEY", "clave-de-practica-cambiala-por-una-mas-larga-123")
@@ -45,6 +40,12 @@ USERS = {
 
 # --- App ---------------------------------------------------------------------
 app = FastAPI(title="Practica JWT")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8080"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 bearer = HTTPBearer()
 
 
